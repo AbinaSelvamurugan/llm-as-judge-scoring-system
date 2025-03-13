@@ -1,0 +1,5 @@
+dataset_version: synthetic-test-v1
+max_import_bytes: 8000000
+max_import_records: 20000
+min_independent_human_raters: 2
+holdout_policy: split_before_tuning

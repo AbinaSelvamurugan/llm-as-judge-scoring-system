@@ -1,0 +1,13 @@
+model: claude-sonnet-4-6
+prompt_version: v1
+timeout_seconds: 60
+max_retries: 2
+max_tokens: 2048
+reference_policy: as_available
+evidence_policy: as_available
+repeat_count: 1
+limit: 20
+verify_model: true
+batch_size: 5
+structured_output: true
+fallback_parse_retries: 1

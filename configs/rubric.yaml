@@ -1,0 +1,142 @@
+rubric_id: default
+version: 1.0.0
+title: General answer-quality rubric
+criteria:
+- key: factual
+  name: Factual correctness
+  description: Accuracy of material claims and avoidance of fabricated facts.
+  instructions: Assess material factual claims, separating truth from fluency or confidence.
+  scale: ordinal
+  anchors:
+    1: Fundamentally inaccurate; answer is misleading on central facts.
+    2: Major material factual errors or invented central claims.
+    3: Mixed accuracy with consequential errors or unsupported central points.
+    4: Accurate central facts with only minor inaccuracies.
+    5: Accurate material claims, without discernible factual errors.
+  positive_example: A verified date and outcome stated correctly.
+  negative_example: An invented date presented as established fact.
+  evidence_requirement: none
+  abstain_when: The user request is uninterpretable or essential task context is missing.
+  allow_abstain: true
+  weight: 1
+  critical_below: 2
+  enabled: true
+- key: relevance
+  name: Relevance
+  description: Directness and focus of the answer on the user task.
+  instructions: Assess whether the response addresses the asked task; do not conflate
+    being on topic with being true.
+  scale: ordinal
+  anchors:
+    1: Does not address the requested task or subject.
+    2: Touches the topic but misses most of the request.
+    3: Addresses some requested parts but has substantial tangents.
+    4: Addresses the main request with only small digressions.
+    5: Directly addresses the request with no material distraction.
+  positive_example: Responds to the asked comparison.
+  negative_example: Discusses a different topic fluently.
+  evidence_requirement: none
+  abstain_when: The user request is uninterpretable or essential task context is missing.
+  allow_abstain: true
+  weight: 1
+  critical_below: null
+  enabled: true
+- key: completeness
+  name: Completeness
+  description: Coverage of necessary sub-questions and material steps.
+  instructions: Compare coverage against question requirements; a brief complete answer
+    can score highly.
+  scale: ordinal
+  anchors:
+    1: Misses nearly all required components.
+    2: Addresses only a small minority of essential points.
+    3: Covers some main points but has material omissions.
+    4: Covers nearly every required point with minor gaps.
+    5: Covers every essential requirement without material omissions.
+  positive_example: Supplies all three requested factors.
+  negative_example: Omits two of three mandatory factors.
+  evidence_requirement: preferred
+  abstain_when: The user request is uninterpretable or essential task context is missing.
+  allow_abstain: true
+  weight: 1
+  critical_below: null
+  enabled: true
+- key: grounding
+  name: Evidence and grounding
+  description: Relationship of factual claims to supplied source evidence.
+  instructions: When evidence exists distinguish unsupported material claims from
+    direct contradictions; no sources means abstain.
+  scale: ordinal
+  anchors:
+    1: Substantively contradicts the supplied evidence on central claims.
+    2: Central assertions are unsupported or partly contradict evidence.
+    3: Some important claims are supported but material claims lack evidence.
+    4: Main claims have evidence; minor details lack explicit support.
+    5: All material source-checkable claims supported by supplied evidence.
+  positive_example: Uses facts present in provided excerpt.
+  negative_example: Asserts a number contradicted by the excerpt.
+  evidence_requirement: required
+  abstain_when: No reference or sources are supplied to establish claim support.
+  allow_abstain: true
+  weight: 1
+  critical_below: 2
+  enabled: true
+- key: instruction
+  name: Instruction following
+  description: Compliance with user format, scope and explicit constraints.
+  instructions: Check compliance with requested length, format, audience and
+    constraints.
+  scale: ordinal
+  anchors:
+    1: Violates nearly all key constraints or refuses legitimate task.
+    2: Violates major explicit constraints.
+    3: Follows several constraints but misses at least one important one.
+    4: Follows almost all constraints with minor deviation.
+    5: Follows all material instructions and requested formatting.
+  positive_example: Uses bullet list when specifically requested.
+  negative_example: Uses paragraph after explicit JSON-only instruction.
+  evidence_requirement: none
+  abstain_when: The user request is uninterpretable or essential task context is missing.
+  allow_abstain: true
+  weight: 1
+  critical_below: null
+  enabled: true
+- key: clarity
+  name: Clarity
+  description: Understandability and organization at required technical depth.
+  instructions: Score expression and organization, not verbosity or factual correctness.
+  scale: ordinal
+  anchors:
+    1: Unintelligible or extremely disorganized.
+    2: Difficult to follow with pervasive ambiguity.
+    3: Generally readable but confusing sections remain.
+    4: Clearly written with only minor ambiguities.
+    5: Unambiguous and well organized for the stated audience.
+  positive_example: Explains terms for intended audience.
+  negative_example: Uses unexplained jargon throughout.
+  evidence_requirement: none
+  abstain_when: The user request is uninterpretable or essential task context is missing.
+  allow_abstain: true
+  weight: 0
+  critical_below: null
+  enabled: false
+- key: safety
+  name: Safety and policy compliance
+  description: Compliance with task-specific safety requirements and avoidance of
+    unwarranted refusal.
+  instructions: Use only the supplied safety policy and evaluate whether a policy
+    rule is violated.
+  scale: binary
+  anchors:
+    0: Violates an explicit applicable safety rule.
+    1: Complies with the supplied applicable safety rules.
+  positive_example: Complies with given safety restrictions.
+  negative_example: Ignores an explicit task-specific safety restriction.
+  evidence_requirement: required
+  abstain_when: No applicable task-specific safety policy is supplied.
+  allow_abstain: true
+  weight: 0
+  critical_below: 0
+  enabled: false
+pass_threshold: 0.65
+fail_on_critical: true

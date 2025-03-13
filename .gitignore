@@ -1,0 +1,35 @@
+# Credentials and local-only settings
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Virtual environments and tool caches
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.pyc
+*.pyo
+*.egg-info/
+build/
+dist/
+.coverage
+htmlcov/
+
+# Local studies and generated output
+*.sqlite3
+*.sqlite3-*
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+results/*
+!results/README.md
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
